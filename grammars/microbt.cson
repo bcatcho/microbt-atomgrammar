@@ -1,0 +1,59 @@
+'scopeName': 'source.microbt'
+'name': 'microbt'
+'fileTypes': ['MBT']
+'patterns': [
+  {
+    'captures':
+      '1':
+        'name': 'keyword.control.ruby'
+      '2':
+        'name': 'entity.name.type.class.ruby'
+    'comment': 'everything being a reserved word, not a value and needing a \'end\' is a..'
+    'match': '(?<!\\.)(\\@tree|\\@sub)\\b\\s*(\'[^\']*\')'
+  },
+  {
+    'comment': 'control characters'
+    'match': '\\b(\\\?)'
+    'name': 'keyword.control.ruby'
+  },
+  {
+    'comment': 'composite nodes'
+    'match': '(?<!\\.)(sel|selector|seq|sequence|inverter|limit|repeat|succeeder|untilfail)\\b'
+    'name': 'support.function.kernel.ruby'
+  },
+  {
+    'comment': 'special leaf nodes'
+    'match': '(?<!\\.)(success|failure)\\b'
+    'name': 'constant.language.boolean.ruby'
+  },
+  {
+    'comment': 'parameters'
+    'match': '(#.*)'
+    'name': 'comment.block.documentation.ruby'
+  },
+  {
+    'captures':
+      '1':
+        'name': 'keyword.control.ruby'
+    'comment': 'parameters'
+    'match': '\\b\\w+\\s*(:)'
+  },
+  {
+    'begin': '\''
+    'beginCaptures':
+      '0':
+        'name': 'punctuation.definition.string.begin.ruby'
+    'comment': "string literal with '' delimitor"
+    'end': '\''
+    'endCaptures':
+      '0':
+        'name': 'punctuation.definition.string.end.ruby'
+    'name': 'string.quoted.single.ruby'
+    'patterns': [
+      {
+        'match': '\\\\\'|\\\\\\\\'
+        'name': 'constant.character.escape.ruby'
+      }
+    ]
+  }
+]
